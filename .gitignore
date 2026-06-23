@@ -23,6 +23,7 @@ PocOrExp_in_Github/
 data-cve-poc/
 poc_zips/
 download/
+archive/
 
 # Databases
 *.db
