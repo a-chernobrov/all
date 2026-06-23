@@ -1,2 +1,36 @@
-PoC-in-GitHub
-data-cve-poc
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+venv/
+.venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project data directories (auto-downloaded content)
+PoC-in-GitHub/
+PocOrExp_in_Github/
+data-cve-poc/
+poc_zips/
+download/
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# State files
+.last_telegram_post_id
+
+# Dependencies
+node_modules/
