@@ -87,14 +87,13 @@ def parse_telegram_post(post_id):
 
 def get_recent_post_ids(limit=200, min_id=0):
     """Получает post_id через постраничную навигацию.
-    limit=0 означает без лимита (максимум 200 страниц).
+    limit=0 означает без ограничения по количеству постов.
     """
     post_ids = set()
     before = None
     page_count = 0
-    max_pages = 200  # ~6000 постов максимум
 
-    while page_count < max_pages:
+    while True:
         if limit > 0 and len(post_ids) >= limit:
             break
 
@@ -125,8 +124,13 @@ def get_recent_post_ids(limit=200, min_id=0):
         if not page_ids:
             break
 
+        next_before = min(page_ids)
+        if before is not None and next_before >= before:
+            print("Пагинация остановлена: курсор не изменился")
+            break
+
         post_ids.update(page_ids)
-        before = min(page_ids)
+        before = next_before
         page_count += 1
         print(f"  Страница {page_count}: +{len(page_ids)} IDs, всего {len(post_ids)}")
         time.sleep(1)
